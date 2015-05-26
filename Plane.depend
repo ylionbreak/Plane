@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1432281421 source:f:\dev-cpp\cproject\plane\main.cpp
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<SFML/Graphics/Texture.hpp>
+	<SFML/Graphics/Sprite.hpp>
+	<cstdlib>
+	<ctime>
+	"MyGun.h"
+
+1432281329 f:\dev-cpp\cproject\plane\mygun.h
+	<SFML/Graphics/Sprite.hpp>
+
+1432280297 source:f:\dev-cpp\cproject\plane\mygun.cpp
+
