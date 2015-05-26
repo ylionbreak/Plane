@@ -31,6 +31,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="EnemyPlane.cpp" />
+		<Unit filename="EnemyPlane.h" />
 		<Unit filename="MyGun.cpp" />
 		<Unit filename="MyGun.h" />
 		<Unit filename="main.cpp" />

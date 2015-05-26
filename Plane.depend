@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1432281421 source:f:\dev-cpp\cproject\plane\main.cpp
+1432606700 source:f:\dev-cpp\cproject\plane\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<SFML/Graphics/Texture.hpp>
@@ -7,9 +7,19 @@
 	<cstdlib>
 	<ctime>
 	"MyGun.h"
+	"EnemyPlane.h"
 
-1432281329 f:\dev-cpp\cproject\plane\mygun.h
+1432603711 f:\dev-cpp\cproject\plane\mygun.h
 	<SFML/Graphics/Sprite.hpp>
+	<SFML/Graphics/Texture.hpp>
 
-1432280297 source:f:\dev-cpp\cproject\plane\mygun.cpp
+1432603711 source:f:\dev-cpp\cproject\plane\mygun.cpp
+	"MyGun.h"
+
+1432603712 source:f:\dev-cpp\cproject\plane\enemyplane.cpp
+	"EnemyPlane.h"
+
+1432603712 f:\dev-cpp\cproject\plane\enemyplane.h
+	<SFML/Graphics/Sprite.hpp>
+	<SFML/Graphics/Texture.hpp>
 

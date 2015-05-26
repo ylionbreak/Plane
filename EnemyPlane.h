@@ -2,8 +2,9 @@
 #include <SFML/Graphics/Texture.hpp>
 using namespace sf;
 
-class MyGun : public Sprite{
+class EnemyPlane : public Sprite{
     public:
         bool exist=false;
+
 
 };

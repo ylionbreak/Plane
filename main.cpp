@@ -5,92 +5,137 @@
 #include <cstdlib>
 #include <ctime>
 #include "MyGun.h"
+#include "EnemyPlane.h"
 using namespace std;
-unsigned int gunNum=0;
+unsigned int gunNum=1;
+unsigned int planeMaxNum=5;
+unsigned int planeNum=0;
 int main(){
 
     sf::RenderWindow window(sf::VideoMode(600, 840), "plane");
-
-    sf::Texture texture;
-    texture.loadFromFile("myplane.png");
-
-    sf::Sprite sprite;
-    sprite.setTexture(texture);
-    sprite.setPosition(sf::Vector2f(250, 700));
     sf::Music music;
     music.openFromFile("music.ogg");
     music.play();
-    MyGun *myGunList[50];
+    srand((unsigned)time(0));
+    rand();
 
+    sf::Texture myplaneTexture;
+    myplaneTexture.loadFromFile("myplane.png");
+    sf::Texture enemyTextture;
+    enemyTextture.loadFromFile("enemy1.png");
+    sf::Texture gunTextture;
+    gunTextture.loadFromFile("mygun.png");
+
+    sf::Sprite myPlane;
+    myPlane.setTexture(myplaneTexture);
+    myPlane.setPosition(sf::Vector2f(250, 700));
+    MyGun *myGunList[50];
+    EnemyPlane *enemyPlaneList[30];
+
+    for(int i=0;i<30;i++){
+        EnemyPlane *enemyPlane = new EnemyPlane();
+        enemyPlaneList[i]=enemyPlane;
+        enemyPlaneList[i]->setTexture(enemyTextture);
+    }
     for(int i=0;i<50;i++){
         MyGun *myGun = new MyGun();
         myGunList[i]=myGun;
+        myGunList[i]->setTexture(gunTextture);
     }
-
-
-
-    sf::Texture gunTextture;
-    gunTextture.loadFromFile("mygun.png");
-    while (window.isOpen())
-    {
+    window.setFramerateLimit(60);
+    while (window.isOpen()){
         float planePosi;
-        planePosi=sprite.getPosition().x;
-        //×óÓÒÒÆ¶¯
+        planePosi=myPlane.getPosition().x;
         if(planePosi<550&&planePosi>-30){
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-                sprite.move(1, 0);
+                myPlane.move(10, 0);
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-                sprite.move(-1, 0);
+                myPlane.move(-10, 0);
             }
         }else if(planePosi<=-30){
-            sprite.setPosition(sf::Vector2f(-29, 700));
+            myPlane.setPosition(sf::Vector2f(-29, 700));
         }else{
-            sprite.setPosition(sf::Vector2f(549, 700));
+            myPlane.setPosition(sf::Vector2f(549, 700));
         }
+        //å­å¼¹
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-            printf("x");
-
-            if(gunNum-1>=0&&myGunList[gunNum-1]->exist&&myGunList[gunNum]->exist==false&&myGunList[gunNum]->getPosition().y>620){
-                if(gunNum>48)
-                    gunNum=0;
-                gunNum++;
-                printf("y");
+            //first one
+            if(gunNum==1){
                 myGunList[gunNum]->exist=true;
-                myGunList[gunNum]->setTexture(gunTextture);
-                myGunList[gunNum]->setPosition(sf::Vector2f(sprite.getPosition().x+35, 660));
-            }else if(gunNum-1>=0&&myGunList[gunNum]->exist==false&&!myGunList[gunNum-1]->exist){
-                if(gunNum>48)
-                    gunNum=0;
+                myGunList[gunNum]->setPosition(sf::Vector2f(myPlane.getPosition().x+35, 660));
                 gunNum++;
-                printf("z");
+                if(gunNum>47)
+                    gunNum=1;
+            }//other,this don't exist,before fly away
+            else if(myGunList[gunNum]->exist==false&&myGunList[gunNum-1]->exist&&myGunList[gunNum-1]->getPosition().y<600){
                 myGunList[gunNum]->exist=true;
-                myGunList[gunNum]->setTexture(gunTextture);
-                myGunList[gunNum]->setPosition(sf::Vector2f(sprite.getPosition().x+35, 660));
-            }else if(gunNum-1>=0&&myGunList[gunNum]->exist==false&&!myGunList[gunNum-1]->exist){
-                if(gunNum>48)
-                    gunNum=0;
+                myGunList[gunNum]->setPosition(sf::Vector2f(myPlane.getPosition().x+35, 660));
                 gunNum++;
-                printf("z");
+                if(gunNum>47)
+                    gunNum=1;
+            }else if(!myGunList[gunNum]->exist&&!myGunList[gunNum-1]->exist){
                 myGunList[gunNum]->exist=true;
-                myGunList[gunNum]->setTexture(gunTextture);
-                myGunList[gunNum]->setPosition(sf::Vector2f(sprite.getPosition().x+35, 660));
+                myGunList[gunNum]->setPosition(sf::Vector2f(myPlane.getPosition().x+35, 660));
+                gunNum++;
+                if(gunNum>47)
+                    gunNum=1;
             }
         }
-
-        //ÒÆ¶¯
         for(int i=0;i<=49;i++){
             if(myGunList[i]->exist){
-                myGunList[i]->move(0 , -0.5);
+                myGunList[i]->move(0 , -5);
             }
         }
-        //Åö×²¼ì²â
+        //é£žæœº
+        if(rand()%50==5&&planeNum<planeMaxNum){
+            //printf("x");
+            for(int i=0;i<planeMaxNum;i++){
+                if(!enemyPlaneList[i]->exist){
+                    enemyPlaneList[i]->exist=true;
+                    enemyPlaneList[i]->setPosition(sf::Vector2f(rand()%400+50, -100));
+                    planeNum++;
+                    break;
+                }
+            }
 
+        }
+        for(int i=0;i<planeMaxNum;i++){
+            if(enemyPlaneList[i]->exist){
+                enemyPlaneList[i]->move( 0, 5);
+            }
+        }
+        //ç¢°æ’ž
+        for(int i=0;i<planeMaxNum;i++){
+            if(enemyPlaneList[i]->exist){
+                for(int j=0;j<50;j++){
+                    if(myGunList[j]->exist){
+                        if( enemyPlaneList[i]->getGlobalBounds().intersects(myGunList[j]->getGlobalBounds()) ){
+                            myGunList[j]->exist=false;
+                            enemyPlaneList[i]->exist=false;
+                            planeNum--;
+                        }
+
+                    }
+                }
+            }
+        }
+        //ç»˜åˆ¶
         window.clear(sf::Color::White);
-        window.draw(sprite);
+        window.draw(myPlane);
+        for(int i=0;i<planeMaxNum;i++){
+            if(enemyPlaneList[i]->exist){
+                if(enemyPlaneList[i]->getPosition().y>840){
+                    enemyPlaneList[i]->exist=false;
+                    planeNum--;
+                }
+                if(enemyPlaneList[i]->exist)
+                    window.draw(*enemyPlaneList[i]);
+            }
+        }
         for(int i=0;i<50;i++){
             if(myGunList[i]->exist){
-                if(myGunList[i]->getPosition().y>700){
+                if(myGunList[i]->getPosition().y<0){
                     myGunList[i]->exist=false;
                 }
                 if(myGunList[i]->exist)
@@ -100,13 +145,10 @@ int main(){
         window.display();
         sf::Event event;
         while (window.pollEvent(event)){
-
             if (event.type == sf::Event::Closed)
                 window.close();
-
         }
     }
-
     return 0;
 
 }
