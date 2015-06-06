@@ -1,13 +1,16 @@
 # depslib dependency file v1.0
-1432606700 source:f:\dev-cpp\cproject\plane\main.cpp
+1433492409 source:f:\dev-cpp\cproject\plane\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
-	<SFML/Graphics/Texture.hpp>
-	<SFML/Graphics/Sprite.hpp>
 	<cstdlib>
+	<iostream>
 	<ctime>
+	"MyPlane.h"
 	"MyGun.h"
+	"TextureLoader.h"
 	"EnemyPlane.h"
+	"ScoreText.h"
+	"EnemyGun.h"
 
 1432603711 f:\dev-cpp\cproject\plane\mygun.h
 	<SFML/Graphics/Sprite.hpp>
@@ -16,10 +19,58 @@
 1432603711 source:f:\dev-cpp\cproject\plane\mygun.cpp
 	"MyGun.h"
 
-1432603712 source:f:\dev-cpp\cproject\plane\enemyplane.cpp
+1432882287 source:f:\dev-cpp\cproject\plane\enemyplane.cpp
 	"EnemyPlane.h"
 
-1432603712 f:\dev-cpp\cproject\plane\enemyplane.h
+1432884406 f:\dev-cpp\cproject\plane\enemyplane.h
+	<SFML/Graphics/Sprite.hpp>
+	<SFML/Graphics/Texture.hpp>
+
+1432884541 f:\dev-cpp\cproject\plane\include\mygun.h
+	<SFML/Graphics/Sprite.hpp>
+	<SFML/Graphics/Texture.hpp>
+
+1432601697 source:f:\dev-cpp\cproject\plane\src\enemy.cpp
+
+1432603711 source:f:\dev-cpp\cproject\plane\src\mygun.cpp
+	"MyGun.h"
+
+1433491081 source:f:\dev-cpp\cproject\plane\src\textureloader.cpp
+	"TextureLoader.h"
+
+1433491081 f:\dev-cpp\cproject\plane\include\textureloader.h
+	<SFML/Graphics/Texture.hpp>
+
+1433492386 source:f:\dev-cpp\cproject\plane\src\enemyplane.cpp
+	"EnemyPlane.h"
+
+1433491898 f:\dev-cpp\cproject\plane\include\enemyplane.h
+	"TextureLoader.h"
+	<iostream>
+	<cstdlib>
+	<SFML/System/Clock.hpp>
+	<SFML/Graphics/Sprite.hpp>
+	<SFML/Graphics/Texture.hpp>
+
+1433490691 source:f:\dev-cpp\cproject\plane\src\scoretext.cpp
+	"ScoreText.h"
+
+1433489996 f:\dev-cpp\cproject\plane\include\scoretext.h
+	<SFML/Graphics/Text.hpp>
+	<SFML/Graphics/Font.hpp>
+	<string>
+
+1433492120 source:f:\dev-cpp\cproject\plane\src\enemygun.cpp
+	"EnemyGun.h"
+
+1433491673 f:\dev-cpp\cproject\plane\include\enemygun.h
+	<SFML/Graphics/Sprite.hpp>
+	<SFML/Graphics/Texture.hpp>
+
+1433490388 source:f:\dev-cpp\cproject\plane\src\myplane.cpp
+	"MyPlane.h"
+
+1433489996 f:\dev-cpp\cproject\plane\include\myplane.h
 	<SFML/Graphics/Sprite.hpp>
 	<SFML/Graphics/Texture.hpp>
 
