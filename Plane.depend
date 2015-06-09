@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1433492409 source:f:\dev-cpp\cproject\plane\main.cpp
+1433813459 source:f:\dev-cpp\cproject\plane\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<cstdlib>
@@ -11,6 +11,8 @@
 	"EnemyPlane.h"
 	"ScoreText.h"
 	"EnemyGun.h"
+	"LifeText.h"
+	"ResLoader.h"
 
 1432603711 f:\dev-cpp\cproject\plane\mygun.h
 	<SFML/Graphics/Sprite.hpp>
@@ -52,10 +54,10 @@
 	<SFML/Graphics/Sprite.hpp>
 	<SFML/Graphics/Texture.hpp>
 
-1433490691 source:f:\dev-cpp\cproject\plane\src\scoretext.cpp
+1433809795 source:f:\dev-cpp\cproject\plane\src\scoretext.cpp
 	"ScoreText.h"
 
-1433489996 f:\dev-cpp\cproject\plane\include\scoretext.h
+1433809795 f:\dev-cpp\cproject\plane\include\scoretext.h
 	<SFML/Graphics/Text.hpp>
 	<SFML/Graphics/Font.hpp>
 	<string>
@@ -73,4 +75,19 @@
 1433489996 f:\dev-cpp\cproject\plane\include\myplane.h
 	<SFML/Graphics/Sprite.hpp>
 	<SFML/Graphics/Texture.hpp>
+
+1433810927 f:\dev-cpp\cproject\plane\include\lifetext.h
+	<SFML/Graphics/Text.hpp>
+	<SFML/Graphics/Font.hpp>
+	<string>
+
+1433810976 source:f:\dev-cpp\cproject\plane\src\lifetext.cpp
+	"LifeText.h"
+
+1433813277 f:\dev-cpp\cproject\plane\include\resloader.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+
+1433813021 source:f:\dev-cpp\cproject\plane\src\resloader.cpp
+	"ResLoader.h"
 

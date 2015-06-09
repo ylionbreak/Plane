@@ -9,6 +9,8 @@
 #include "EnemyPlane.h"
 #include "ScoreText.h"
 #include "EnemyGun.h"
+#include "LifeText.h"
+#include "ResLoader.h"
 using namespace std;
 unsigned int gunNum=1;
 unsigned int planeMaxNum=5;
@@ -21,24 +23,22 @@ int main(){
     music.play();
     srand((unsigned)time(0));
     TextureLoader::init();
-    //字体
-    Font font;
-    font.loadFromFile("msyh.ttf");
+    ResLoader::init();
     ScoreText score(1);
-    score.setFont(font);
-    //声音
-    sf::SoundBuffer bangBuffer;
-    bangBuffer.loadFromFile("bang.wav");
+    score.setFont(ResLoader::getMicroBlack());
     sf::Sound breakSound;
-    breakSound.setBuffer(bangBuffer);
-    sf::SoundBuffer piaBuffer;
-    piaBuffer.loadFromFile("pia.wav");
+    breakSound.setBuffer(ResLoader::getbang());
     sf::Sound hitSound;
-    hitSound.setBuffer(piaBuffer);
-    //
+    hitSound.setBuffer(ResLoader::getpia());
+
     MyPlane myPlane;
     myPlane.setTexture(TextureLoader::getMyplaneTexture());
     myPlane.setPosition(sf::Vector2f(250, 700));
+
+    LifeText lifeText;
+    lifeText.setFont(ResLoader::getMicroBlack());
+    lifeText.setPosition(560,0);
+
     MyGun *myGunList[50];
     EnemyPlane *enemyPlaneList[30];
     EnemyGun *enemyGunList[200];
@@ -113,11 +113,11 @@ int main(){
                 }
             }
             for(int i=0;i<200;i++){
-                enemyGunList[i]->move( 0, 6);
+                enemyGunList[i]->move( 0, 6+score.getScore()/300);
             }
             //飞机
-            if(rand()%30==3&&planeNum<planeMaxNum){
-                for(int i=0;i<planeMaxNum;i++){
+            if(rand()%30==3&&planeNum<planeMaxNum+score.getScore()/30){
+                for(int i=0;i<planeMaxNum+score.getScore()/30;i++){
                     if(!enemyPlaneList[i]->exist){
                         enemyPlaneList[i]->exist=true;
                         if(rand()%2==0){
@@ -136,7 +136,7 @@ int main(){
             }
             for(int i=0;i<planeMaxNum;i++){
                 if(enemyPlaneList[i]->exist&&enemyPlaneList[i]->getLifePoint()>0){
-                    enemyPlaneList[i]->move( 0, 4);
+                    enemyPlaneList[i]->move( 0, 4+score.getScore()/300);
                 }
             }
             //碰撞
@@ -222,6 +222,8 @@ int main(){
                     }
                 }
             }
+            lifeText.setLifeText(myPlane.getLife());
+            window.draw(lifeText);
             window.draw(score);
 
             window.display();
@@ -230,10 +232,11 @@ int main(){
                 if (event.type == sf::Event::Closed)
                     window.close();
             }
+
         }else{
             window.clear(sf::Color::White);
             ScoreText deadText(2);
-            deadText.setFont(font);
+            deadText.setFont(ResLoader::getMicroBlack());
             deadText.setPosition(225,350);
             window.draw(deadText);
             window.display();

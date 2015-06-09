@@ -35,16 +35,20 @@
 		</Compiler>
 		<Unit filename="include/EnemyGun.h" />
 		<Unit filename="include/EnemyPlane.h" />
+		<Unit filename="include/LifeText.h" />
 		<Unit filename="include/MyGun.h" />
 		<Unit filename="include/MyPlane.h" />
+		<Unit filename="include/ResLoader.h" />
 		<Unit filename="include/ScoreText.h" />
 		<Unit filename="include/TextureLoader.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Enemy.cpp" />
 		<Unit filename="src/EnemyGun.cpp" />
 		<Unit filename="src/EnemyPlane.cpp" />
+		<Unit filename="src/LifeText.cpp" />
 		<Unit filename="src/MyGun.cpp" />
 		<Unit filename="src/MyPlane.cpp" />
+		<Unit filename="src/ResLoader.cpp" />
 		<Unit filename="src/ScoreText.cpp" />
 		<Unit filename="src/TextureLoader.cpp" />
 		<Extensions>

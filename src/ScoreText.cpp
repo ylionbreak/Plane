@@ -20,3 +20,6 @@ void ScoreText::addScore(int thisScore){
 
     setString(buffer);
 }
+int ScoreText::getScore(){
+    return score;
+}

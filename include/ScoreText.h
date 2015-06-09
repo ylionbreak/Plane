@@ -11,7 +11,7 @@ class ScoreText : public Text{
     public:
         ScoreText(int type);
         void addScore(int thisScore);
-
+        int getScore();
     protected:
     private:
         char buffer[50];
