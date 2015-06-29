@@ -1,0 +1,67 @@
+@startuml
+
+
+class EnemyGun {
+	EnemyGun()
+	bool exist=false
+}
+
+class EnemyPlane {
+	Clock clock
+	Clock shootClock
+	EnemyPlane()
+	bool exist=false
+	void initLifePoint(int _lifePoint)
+	void hitted()
+	void playAnim()
+	int getLifePoint()
+	int getMaxLifePoint()
+	int getAnimTime()
+	bool shoot()
+}
+
+class LifeText{
+	LifeText()
+	void setLifeText(int life)
+}
+
+class EnemyGun{
+	bool exist=false
+}
+
+class MyPlane{
+	MyPlane();
+	int getLife()
+	void hitted()
+}
+
+class ResLoader{
+	void init()
+	Font& getMicroBlack()
+	SoundBuffer& getbang()
+	SoundBuffer& getpia()
+}
+
+class ScoreText{
+	ScoreText(int type)
+	void addScore(int thisScore)
+	int getScore()
+}
+
+class TextureLoader{
+	void init()
+	Texture& getMyplaneTexture()
+	Texture& getEnemyTextture1()
+	Texture& getEnemyTextture2()
+	Texture& getGunTextture()
+	Texture& getEnemy2TexttureAnim(int time)
+	Texture& getEnemyGunTextture()
+}
+
+EnemyGun --|>  Sprite
+EnemyPlane --|>  Sprite
+LifeText --|>  Text
+MyGun --|>  Sprite
+ScoreText --|>  Text
+MyPlane --|>  Sprite
+@enduml
